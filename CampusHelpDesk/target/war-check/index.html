@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Campus AI Helpdesk</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f1f5f9;
+            color: #1e293b;
+        }
+
+        /* =========================
+           HEADER
+           ========================= */
+
+        header {
+            background: linear-gradient(
+                135deg,
+                #243b55,
+                #141e30
+            );
+
+            color: white;
+            padding: 35px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 36px;
+        }
+
+        header p {
+            margin-top: 10px;
+            font-size: 16px;
+            opacity: 0.85;
+        }
+
+
+        /* =========================
+           NAVIGATION
+           ========================= */
+
+        nav {
+            background-color: #172a3a;
+            padding: 16px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 18px;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+
+        /* =========================
+           MAIN CONTAINER
+           ========================= */
+
+        .container {
+            width: 94%;
+            max-width: 1100px;
+            margin: 35px auto;
+        }
+
+
+        /* =========================
+           HERO SECTION
+           ========================= */
+
+        .hero {
+            background: white;
+            padding: 35px;
+            border-radius: 14px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.06);
+            margin-bottom: 25px;
+        }
+
+        .hero h2 {
+            margin-top: 0;
+            font-size: 28px;
+            color: #243b55;
+        }
+
+        .hero p {
+            color: #64748b;
+            line-height: 1.6;
+            font-size: 15px;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 7px 13px;
+            border-radius: 20px;
+            background-color: #e2e8f0;
+            color: #243b55;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+
+        /* =========================
+           BOX
+           ========================= */
+
+        .box {
+            background: white;
+            padding: 30px;
+            border-radius: 14px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.06);
+            margin-bottom: 25px;
+        }
+
+        .box h2 {
+            margin-top: 0;
+            color: #243b55;
+        }
+
+
+        /* =========================
+           FORM
+           ========================= */
+
+        form {
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            margin-top: 18px;
+            margin-bottom: 7px;
+            font-weight: bold;
+            font-size: 14px;
+            color: #334155;
+        }
+
+        input,
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 7px;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            background-color: white;
+        }
+
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        input:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-color: #243b55;
+            box-shadow: 0 0 0 2px rgba(36,59,85,0.08);
+        }
+
+        button {
+            margin-top: 22px;
+            padding: 12px 24px;
+            background-color: #243b55;
+            color: white;
+            border: none;
+            border-radius: 7px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #172a3a;
+        }
+
+
+        /* =========================
+           AI AUTO TRIAGE
+           ========================= */
+
+        .ai {
+            border-left: 5px solid #243b55;
+        }
+
+        .ai-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .ai-icon {
+            font-size: 24px;
+        }
+
+        .ai-description {
+            color: #64748b;
+            line-height: 1.6;
+        }
+
+        .example {
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .example-title {
+            font-weight: bold;
+            color: #243b55;
+            margin-bottom: 12px;
+        }
+
+        .example p {
+            margin: 8px 0;
+            font-size: 14px;
+        }
+
+        .result {
+            font-weight: bold;
+        }
+
+
+        /* =========================
+           TRACK TICKETS
+           ========================= */
+
+        .track-box {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .track-text h2 {
+            margin-bottom: 8px;
+        }
+
+        .track-text p {
+            margin: 0;
+            color: #64748b;
+            line-height: 1.5;
+        }
+
+        .track-button {
+            display: inline-block;
+            padding: 12px 20px;
+            background-color: #243b55;
+            color: white;
+            text-decoration: none;
+            border-radius: 7px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .track-button:hover {
+            background-color: #172a3a;
+        }
+
+
+        /* =========================
+           FOOTER
+           ========================= */
+
+        footer {
+            background-color: #172a3a;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 13px;
+            opacity: 0.85;
+        }
+
+
+        /* =========================
+           RESPONSIVE
+           ========================= */
+
+        @media (max-width: 700px) {
+
+            header {
+                padding: 28px 15px;
+            }
+
+            header h1 {
+                font-size: 28px;
+            }
+
+            nav a {
+                margin: 0 7px;
+                font-size: 13px;
+            }
+
+            .container {
+                width: 96%;
+            }
+
+            .hero,
+            .box {
+                padding: 22px;
+            }
+
+            .track-box {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         HEADER
+         ========================= -->
+
+    <header>
+
+        <h1>Campus AI Helpdesk</h1>
+
+        <p>
+            Smart Campus Support System
+        </p>
+
+    </header>
+
+
+    <!-- =========================
+         NAVIGATION
+         ========================= -->
+
+    <nav>
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="#create-ticket">
+            Create Ticket
+        </a>
+
+        <a href="my-tickets">
+            My Tickets
+        </a>
+
+        <a href="login.html">
+            Login
+        </a>
+
+        <a href="logout">
+            Logout
+        </a>
+
+    </nav>
+
+
+    <!-- =========================
+         MAIN
+         ========================= -->
+
+    <div class="container">
+
+
+        <!-- HERO -->
+
+        <div class="hero">
+
+            <h2>
+                Welcome to Campus Helpdesk 
+            </h2>
+
+            <p>
+                Report your campus-related problems and track
+                their progress through our smart AI-powered
+                helpdesk system.
+            </p>
+
+            <p>
+                Our system automatically analyzes your issue,
+                identifies the appropriate category and priority,
+                and routes the ticket to the correct department.
+            </p>
+
+            <span class="hero-tag">
+                AI-Powered Campus Support
+            </span>
+
+        </div>
+
+
+        <!-- =========================
+             CREATE TICKET
+             ========================= -->
+
+        <div class="box"
+             id="create-ticket">
+
+            <h2>
+                Create a Support Ticket
+            </h2>
+
+            <p>
+                Enter your problem below and our system will
+                automatically analyze and route your ticket.
+            </p>
+
+
+            <form action="create-ticket"
+                  method="post">
+
+
+                <label>
+                    Student Name
+                </label>
+
+                <input
+                    type="text"
+                    name="studentName"
+                    placeholder="Enter your name"
+                    required>
+
+
+                <label>
+                    Issue Title
+                </label>
+
+                <input
+                    type="text"
+                    name="subject"
+                    placeholder="Example: Wi-Fi not working"
+                    required>
+
+
+                <label>
+                    Describe Your Problem
+                </label>
+
+                <textarea
+                    name="description"
+                    placeholder="Describe your problem clearly..."
+                    required></textarea>
+
+
+                <label>
+                    Module
+                </label>
+
+                <select name="module">
+
+                    <option value="IT Support">
+                        IT Support
+                    </option>
+
+                    <option value="Academics">
+                        Academics
+                    </option>
+
+                    <option value="Hostel">
+                        Hostel
+                    </option>
+
+                    <option value="Maintenance">
+                        Maintenance
+                    </option>
+
+                </select>
+
+
+                <button type="submit">
+                    Submit Ticket
+                </button>
+
+            </form>
+
+        </div>
+
+
+        <!-- =========================
+             AI AUTO TRIAGE
+             ========================= -->
+
+        <div class="box ai">
+
+            <div class="ai-title">
+
+                <span class="ai-icon">
+                    🤖
+                </span>
+
+                <h2>
+                    AI Auto-Triage
+                </h2>
+
+            </div>
+
+
+            <p class="ai-description">
+
+                Our system analyzes the issue description
+                using predefined keywords and automatically
+                identifies the category, priority and
+                responsible department.
+
+            </p>
+
+
+            <div class="example">
+
+                <div class="example-title">
+                    Example Analysis
+                </div>
+
+
+                <p>
+                    <b>Student Issue:</b>
+                </p>
+
+                <p>
+                    "Wi-Fi is not working in the computer lab."
+                </p>
+
+
+                <p>
+                    Category:
+                    <span class="result">
+                        IT / Network
+                    </span>
+                </p>
+
+
+                <p>
+                    Priority:
+                    <span class="result">
+                        High
+                    </span>
+                </p>
+
+
+                <p>
+                    Department:
+                    <span class="result">
+                        IT Support
+                    </span>
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+             TRACK TICKETS
+             ========================= -->
+
+        <div class="box">
+
+            <div class="track-box">
+
+
+                <div class="track-text">
+
+                    <h2>
+                        Track Your Tickets
+                    </h2>
+
+                    <p>
+                        View your submitted tickets,
+                        current status, resolution notes
+                        and complete status history.
+                    </p>
+
+                </div>
+
+
+                <a class="track-button"
+                   href="my-tickets">
+
+                    View My Tickets →
+
+                </a>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- =========================
+         FOOTER
+         ========================= -->
+
+    <footer>
+
+        <p>
+            Campus AI Helpdesk | PBL Project 2026
+        </p>
+
+    </footer>
+
+
+</body>
+
+</html>

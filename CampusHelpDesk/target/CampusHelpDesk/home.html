@@ -1,0 +1,1160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Campus AI Helpdesk</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f1f5f9;
+            color: #1e293b;
+        }
+
+
+        /* =========================
+           HEADER
+           ========================= */
+
+        header {
+            background: linear-gradient(
+                135deg,
+                #243b55,
+                #141e30
+            );
+
+            color: white;
+            padding: 35px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 36px;
+        }
+
+        header p {
+            margin-top: 10px;
+            font-size: 16px;
+            opacity: 0.85;
+        }
+
+
+        /* =========================
+           NAVIGATION
+           ========================= */
+
+        nav {
+            background-color: #172a3a;
+            padding: 16px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 18px;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+
+        /* =========================
+           MAIN CONTAINER
+           ========================= */
+
+        .container {
+            width: 94%;
+            max-width: 1100px;
+            margin: 35px auto;
+        }
+
+
+        /* =========================
+           HERO SECTION
+           ========================= */
+
+        .hero {
+            background: white;
+            padding: 35px;
+            border-radius: 14px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.06);
+            margin-bottom: 25px;
+        }
+
+        .hero h2 {
+            margin-top: 0;
+            font-size: 28px;
+            color: #243b55;
+        }
+
+        .hero p {
+            color: #64748b;
+            line-height: 1.6;
+            font-size: 15px;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 7px 13px;
+            border-radius: 20px;
+            background-color: #e2e8f0;
+            color: #243b55;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+
+        /* =========================
+           BOX
+           ========================= */
+
+        .box {
+            background: white;
+            padding: 30px;
+            border-radius: 14px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.06);
+            margin-bottom: 25px;
+        }
+
+        .box h2 {
+            margin-top: 0;
+            color: #243b55;
+        }
+
+
+        /* =========================
+           FORM
+           ========================= */
+
+        form {
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            margin-top: 18px;
+            margin-bottom: 7px;
+            font-weight: bold;
+            font-size: 14px;
+            color: #334155;
+        }
+
+        input,
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 7px;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            background-color: white;
+        }
+
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        input:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-color: #243b55;
+            box-shadow: 0 0 0 2px rgba(36,59,85,0.08);
+        }
+
+        button {
+            margin-top: 22px;
+            padding: 12px 24px;
+            background-color: #243b55;
+            color: white;
+            border: none;
+            border-radius: 7px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #172a3a;
+        }
+
+
+        /* =========================
+           AI AUTO TRIAGE
+           ========================= */
+
+        .ai {
+            border-left: 5px solid #243b55;
+        }
+
+        .ai-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .ai-icon {
+            font-size: 24px;
+        }
+
+        .ai-description {
+            color: #64748b;
+            line-height: 1.6;
+        }
+
+        .example {
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .example-title {
+            font-weight: bold;
+            color: #243b55;
+            margin-bottom: 12px;
+        }
+
+        .example p {
+            margin: 8px 0;
+            font-size: 14px;
+        }
+
+        .result {
+            font-weight: bold;
+        }
+
+
+        /* =========================
+           TRACK TICKETS
+           ========================= */
+
+        .track-box {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .track-text h2 {
+            margin-bottom: 8px;
+        }
+
+        .track-text p {
+            margin: 0;
+            color: #64748b;
+            line-height: 1.5;
+        }
+
+        .track-button {
+            display: inline-block;
+            padding: 12px 20px;
+            background-color: #243b55;
+            color: white;
+            text-decoration: none;
+            border-radius: 7px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .track-button:hover {
+            background-color: #172a3a;
+        }
+
+
+        /* =========================
+           FOOTER
+           ========================= */
+
+        footer {
+            background-color: #172a3a;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 13px;
+            opacity: 0.85;
+        }
+
+
+        /* =========================
+           CHATBOT BUTTON
+           ========================= */
+
+        .chatbot-button {
+            position: fixed;
+            right: 25px;
+            bottom: 25px;
+
+            width: 60px;
+            height: 60px;
+
+            background: #243b55;
+            color: white;
+
+            border-radius: 50%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 27px;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 5px 20px rgba(0,0,0,0.2);
+
+            z-index: 999;
+        }
+
+        .chatbot-button:hover {
+            transform: scale(1.05);
+        }
+
+
+        /* =========================
+           CHATBOT WINDOW
+           ========================= */
+
+        .chatbot {
+            position: fixed;
+
+            right: 25px;
+            bottom: 95px;
+
+            width: 360px;
+            max-width: calc(100vw - 30px);
+
+            height: 500px;
+
+            background: white;
+
+            border-radius: 15px;
+
+            box-shadow:
+                0 10px 35px rgba(0,0,0,0.2);
+
+            display: none;
+
+            flex-direction: column;
+
+            overflow: hidden;
+
+            z-index: 1000;
+        }
+
+
+        /* CHATBOT HEADER */
+
+        .chatbot-header {
+            background: #243b55;
+
+            color: white;
+
+            padding: 15px 18px;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+        }
+
+        .chatbot-header strong {
+            display: block;
+            font-size: 15px;
+        }
+
+        .chatbot-header small {
+            display: block;
+            margin-top: 4px;
+            font-size: 11px;
+            opacity: 0.8;
+        }
+
+        .chatbot-header button {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 25px;
+            cursor: pointer;
+            margin: 0;
+            padding: 0;
+        }
+
+
+        /* CHAT MESSAGES */
+
+        .chatbot-messages {
+            flex: 1;
+
+            padding: 15px;
+
+            overflow-y: auto;
+
+            background: #f8fafc;
+        }
+
+        .bot-message {
+            background: #e2e8f0;
+
+            color: #334155;
+
+            padding: 11px 13px;
+
+            border-radius:
+                12px 12px 12px 3px;
+
+            margin-bottom: 12px;
+
+            max-width: 85%;
+
+            font-size: 13px;
+
+            line-height: 1.5;
+
+            white-space: pre-wrap;
+        }
+
+        .user-message {
+            background: #243b55;
+
+            color: white;
+
+            padding: 11px 13px;
+
+            border-radius:
+                12px 12px 3px 12px;
+
+            margin:
+                10px 0 10px auto;
+
+            max-width: 85%;
+
+            font-size: 13px;
+
+            line-height: 1.5;
+        }
+
+
+        /* CHAT INPUT */
+
+        .chatbot-input {
+            display: flex;
+
+            padding: 10px;
+
+            border-top:
+                1px solid #e2e8f0;
+
+            background: white;
+        }
+
+        .chatbot-input input {
+            flex: 1;
+
+            margin: 0;
+
+            padding: 11px;
+
+            border:
+                1px solid #cbd5e1;
+
+            border-radius: 7px;
+
+            outline: none;
+
+            font-size: 13px;
+        }
+
+        .chatbot-input button {
+            margin:
+                0 0 0 8px;
+
+            padding: 0;
+
+            width: 45px;
+
+            border: none;
+
+            border-radius: 7px;
+
+            background: #243b55;
+
+            color: white;
+
+            font-size: 18px;
+
+            cursor: pointer;
+        }
+
+
+        /* MOBILE */
+
+        @media (max-width: 700px) {
+
+            header {
+                padding: 28px 15px;
+            }
+
+            header h1 {
+                font-size: 28px;
+            }
+
+            nav a {
+                margin: 0 7px;
+                font-size: 13px;
+            }
+
+            .container {
+                width: 96%;
+            }
+
+            .hero,
+            .box {
+                padding: 22px;
+            }
+
+            .track-box {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .chatbot {
+                right: 15px;
+                bottom: 85px;
+                width: calc(100vw - 30px);
+            }
+
+            .chatbot-button {
+                right: 15px;
+                bottom: 15px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         HEADER
+         ========================= -->
+
+    <header>
+
+        <h1>
+            Campus AI Helpdesk
+        </h1>
+
+        <p>
+            Smart Campus Support System
+        </p>
+
+    </header>
+
+
+    <!-- =========================
+         NAVIGATION
+         ========================= -->
+
+    <nav>
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="#create-ticket">
+            Create Ticket
+        </a>
+
+        <a href="my-tickets">
+            My Tickets
+        </a>
+
+        <a href="login.html">
+            Login
+        </a>
+
+        <a href="logout">
+            Logout
+        </a>
+
+    </nav>
+
+
+    <!-- =========================
+         MAIN
+         ========================= -->
+
+    <div class="container">
+
+
+        <!-- HERO -->
+
+        <div class="hero">
+
+            <h2>
+                Welcome to Campus Helpdesk
+            </h2>
+
+            <p>
+                Report your campus-related problems and track
+                their progress through our smart AI-powered
+                helpdesk system.
+            </p>
+
+            <p>
+                Our system automatically analyzes your issue,
+                identifies the appropriate category and priority,
+                and routes the ticket to the correct department.
+            </p>
+
+            <span class="hero-tag">
+                AI-Powered Campus Support
+            </span>
+
+        </div>
+
+
+        <!-- CREATE TICKET -->
+
+        <div class="box"
+             id="create-ticket">
+
+            <h2>
+                Create a Support Ticket
+            </h2>
+
+            <p>
+                Enter your problem below and our system will
+                automatically analyze and route your ticket.
+            </p>
+
+
+            <form action="create-ticket"
+                  method="post">
+
+
+                <label>
+                    Student Name
+                </label>
+
+                <input
+                    type="text"
+                    name="studentName"
+                    placeholder="Enter your name"
+                    required>
+
+
+                <label>
+                    Issue Title
+                </label>
+
+                <input
+                    type="text"
+                    name="subject"
+                    placeholder="Example: Wi-Fi not working"
+                    required>
+
+
+                <label>
+                    Describe Your Problem
+                </label>
+
+                <textarea
+                    name="description"
+                    placeholder="Describe your problem clearly..."
+                    required></textarea>
+
+
+                <label>
+                    Module
+                </label>
+
+                <select name="module">
+
+                    <option value="IT Support">
+                        IT Support
+                    </option>
+
+                    <option value="Academics">
+                        Academics
+                    </option>
+
+                    <option value="Hostel">
+                        Hostel
+                    </option>
+
+                    <option value="Maintenance">
+                        Maintenance
+                    </option>
+
+                </select>
+
+
+                <button type="submit">
+                    Submit Ticket
+                </button>
+
+            </form>
+
+        </div>
+
+
+        <!-- AI AUTO TRIAGE -->
+
+        <div class="box ai">
+
+            <div class="ai-title">
+
+                <span class="ai-icon">
+                    🤖
+                </span>
+
+                <h2>
+                    AI Auto-Triage
+                </h2>
+
+            </div>
+
+
+            <p class="ai-description">
+
+                Our system analyzes the issue description
+                using predefined keywords and automatically
+                identifies the category, priority and
+                responsible department.
+
+            </p>
+
+
+            <div class="example">
+
+                <div class="example-title">
+                    Example Analysis
+                </div>
+
+
+                <p>
+                    <b>Student Issue:</b>
+                </p>
+
+                <p>
+                    "Wi-Fi is not working in the computer lab."
+                </p>
+
+
+                <p>
+                    Category:
+                    <span class="result">
+                        IT / Network
+                    </span>
+                </p>
+
+
+                <p>
+                    Priority:
+                    <span class="result">
+                        High
+                    </span>
+                </p>
+
+
+                <p>
+                    Department:
+                    <span class="result">
+                        IT Support
+                    </span>
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- TRACK TICKETS -->
+
+        <div class="box">
+
+            <div class="track-box">
+
+
+                <div class="track-text">
+
+                    <h2>
+                        Track Your Tickets
+                    </h2>
+
+                    <p>
+                        View your submitted tickets,
+                        current status, resolution notes
+                        and complete status history.
+                    </p>
+
+                </div>
+
+
+                <a class="track-button"
+                   href="my-tickets">
+
+                    View My Tickets →
+
+                </a>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- =========================
+         FOOTER
+         ========================= -->
+
+    <footer>
+
+        <p>
+            Campus AI Helpdesk | PBL Project 2026
+        </p>
+
+    </footer>
+
+
+    <!-- =========================
+         CAMPUS AI CHATBOT
+         ========================= -->
+
+    <div class="chatbot-button"
+         onclick="toggleChatbot()">
+
+        🤖
+
+    </div>
+
+
+    <div class="chatbot"
+         id="chatbot">
+
+
+        <!-- CHATBOT HEADER -->
+
+        <div class="chatbot-header">
+
+            <div>
+
+                <strong>
+                    Campus AI Assistant
+                </strong>
+
+                <small>
+                    Online • Ready to help
+                </small>
+
+            </div>
+
+
+            <button type="button"
+                    onclick="toggleChatbot()">
+
+                ×
+
+            </button>
+
+        </div>
+
+
+        <!-- CHAT MESSAGES -->
+
+        <div class="chatbot-messages"
+             id="chatbotMessages">
+
+
+            <div class="bot-message">
+
+                👋 Hi! I'm your Campus AI Assistant.
+
+                <br><br>
+
+                Ask me anything related to the Campus Helpdesk,
+                such as IT problems, hostel issues, academics,
+                maintenance, tickets, passwords, or helpdesk services.
+
+            </div>
+
+
+        </div>
+
+
+        <!-- CHAT INPUT -->
+
+        <div class="chatbot-input">
+
+
+            <input
+                type="text"
+                id="chatbotInput"
+                placeholder="Ask your campus helpdesk question..."
+                onkeypress="handleChatKey(event)"
+            >
+
+
+            <button type="button"
+                    onclick="sendMessage()">
+
+                ➤
+
+            </button>
+
+
+        </div>
+
+
+    </div>
+
+
+    <!-- =========================
+         CHATBOT JAVASCRIPT
+         ========================= -->
+
+    <script>
+
+
+        function toggleChatbot() {
+
+            const chatbot =
+                document.getElementById("chatbot");
+
+
+            if (chatbot.style.display === "flex") {
+
+                chatbot.style.display = "none";
+
+            }
+
+            else {
+
+                chatbot.style.display = "flex";
+
+                document
+                    .getElementById("chatbotInput")
+                    .focus();
+
+            }
+
+        }
+
+
+        function handleChatKey(event) {
+
+            if (event.key === "Enter") {
+
+                sendMessage();
+
+            }
+
+        }
+
+
+        async function sendMessage() {
+
+
+            const input =
+                document.getElementById("chatbotInput");
+
+
+            const message =
+                input.value.trim();
+
+
+            if (message === "") {
+
+                return;
+
+            }
+
+
+            const messages =
+                document.getElementById(
+                    "chatbotMessages"
+                );
+
+
+            /* =========================
+               SHOW USER MESSAGE
+               ========================= */
+
+            const userMessage =
+                document.createElement("div");
+
+
+            userMessage.className =
+                "user-message";
+
+
+            userMessage.textContent =
+                message;
+
+
+            messages.appendChild(
+                userMessage
+            );
+
+
+            input.value = "";
+
+
+            messages.scrollTop =
+                messages.scrollHeight;
+
+
+            /* =========================
+               SHOW THINKING MESSAGE
+               ========================= */
+
+            const botMessage =
+                document.createElement("div");
+
+
+            botMessage.className =
+                "bot-message";
+
+
+            botMessage.textContent =
+                "🤖 Thinking...";
+
+
+            messages.appendChild(
+                botMessage
+            );
+
+
+            messages.scrollTop =
+                messages.scrollHeight;
+
+
+            try {
+
+
+                /* =========================
+                   SEND TO JAVA SERVLET
+                   ========================= */
+
+                const formData =
+                    new URLSearchParams();
+
+
+                formData.append(
+                    "message",
+                    message
+                );
+
+
+                const response =
+                    await fetch(
+                        "chatbot",
+                        {
+
+                            method: "POST",
+
+                            headers: {
+
+                                "Content-Type":
+                                    "application/x-www-form-urlencoded"
+
+                            },
+
+                            body: formData
+
+                        }
+                    );
+
+
+                if (!response.ok) {
+
+                    throw new Error(
+                        "Chatbot request failed"
+                    );
+
+                }
+
+
+                /* =========================
+                   GET JAVA RESPONSE
+                   ========================= */
+
+                const data =
+                    await response.json();
+
+
+                /* =========================
+                   DISPLAY AI RESPONSE
+                   ========================= */
+
+                botMessage.textContent =
+                    "🤖 " + data.reply;
+
+
+            }
+
+
+            catch (error) {
+
+
+                console.error(error);
+
+
+                botMessage.textContent =
+                    "🤖 Sorry, I couldn't connect to the Campus AI Assistant. Please try again.";
+
+
+            }
+
+
+            messages.scrollTop =
+                messages.scrollHeight;
+
+        }
+
+
+    </script>
+
+
+</body>
+
+</html>

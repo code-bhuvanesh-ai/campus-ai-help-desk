@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Login - Campus AI Helpdesk</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f1f5f9;
+            color: #1e293b;
+        }
+
+        /* =========================
+           HEADER
+           ========================= */
+
+        header {
+            background: linear-gradient(
+                135deg,
+                #243b55,
+                #141e30
+            );
+
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 32px;
+        }
+
+        header p {
+            margin-top: 8px;
+            opacity: 0.85;
+            font-size: 15px;
+        }
+
+
+        /* =========================
+           NAVIGATION
+           ========================= */
+
+        nav {
+            background-color: #172a3a;
+            padding: 15px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 18px;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+
+        /* =========================
+           LOGIN AREA
+           ========================= */
+
+        .login-container {
+            min-height: 65vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            padding: 40px 20px;
+        }
+
+
+        /* =========================
+           LOGIN CARD
+           ========================= */
+
+        .login-card {
+            width: 100%;
+            max-width: 430px;
+
+            background: white;
+
+            padding: 38px;
+
+            border-radius: 15px;
+
+            box-shadow:
+                0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+
+
+        .login-icon {
+            width: 65px;
+            height: 65px;
+
+            margin: 0 auto 20px;
+
+            border-radius: 50%;
+
+            background-color: #e2e8f0;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 30px;
+        }
+
+
+        .login-card h2 {
+            text-align: center;
+
+            margin: 0;
+
+            font-size: 27px;
+
+            color: #243b55;
+        }
+
+
+        .login-subtitle {
+            text-align: center;
+
+            color: #64748b;
+
+            font-size: 14px;
+
+            line-height: 1.5;
+
+            margin: 10px 0 25px;
+        }
+
+
+        /* =========================
+           FORM
+           ========================= */
+
+        label {
+            display: block;
+
+            margin-top: 18px;
+            margin-bottom: 7px;
+
+            font-size: 14px;
+
+            font-weight: bold;
+
+            color: #334155;
+        }
+
+
+        input {
+            width: 100%;
+
+            padding: 13px;
+
+            border: 1px solid #cbd5e1;
+
+            border-radius: 7px;
+
+            font-size: 14px;
+
+            font-family: Arial, sans-serif;
+        }
+
+
+        input:focus {
+            outline: none;
+
+            border-color: #243b55;
+
+            box-shadow:
+                0 0 0 3px rgba(36, 59, 85, 0.08);
+        }
+
+
+        /* =========================
+           LOGIN BUTTON
+           ========================= */
+
+        .login-button {
+            width: 100%;
+
+            margin-top: 25px;
+
+            padding: 13px;
+
+            background-color: #243b55;
+
+            color: white;
+
+            border: none;
+
+            border-radius: 7px;
+
+            font-size: 15px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+
+        .login-button:hover {
+            background-color: #172a3a;
+        }
+
+
+        /* =========================
+           FORGOT PASSWORD
+           ========================= */
+
+        .forgot-password {
+            text-align: center;
+
+            margin-top: 15px;
+        }
+
+
+        .forgot-password a {
+            color: #243b55;
+
+            text-decoration: none;
+
+            font-size: 13px;
+
+            font-weight: bold;
+        }
+
+
+        .forgot-password a:hover {
+            text-decoration: underline;
+        }
+
+
+        /* =========================
+           REGISTER LINK
+           ========================= */
+
+        .register-link {
+            text-align: center;
+
+            margin-top: 20px;
+
+            padding-top: 18px;
+
+            border-top: 1px solid #e2e8f0;
+
+            color: #64748b;
+
+            font-size: 14px;
+        }
+
+
+        .register-link a {
+            display: inline-block;
+
+            margin-top: 7px;
+
+            color: #243b55;
+
+            text-decoration: none;
+
+            font-weight: bold;
+        }
+
+
+        .register-link a:hover {
+            text-decoration: underline;
+        }
+
+
+        /* =========================
+           INFORMATION BOX
+           ========================= */
+
+        .info-box {
+            margin-top: 22px;
+
+            padding: 14px;
+
+            background-color: #f8fafc;
+
+            border: 1px solid #e2e8f0;
+
+            border-radius: 8px;
+
+            text-align: center;
+        }
+
+
+        .info-box p {
+            margin: 0;
+
+            color: #64748b;
+
+            font-size: 12px;
+
+            line-height: 1.5;
+        }
+
+
+        /* =========================
+           FOOTER
+           ========================= */
+
+        footer {
+            background-color: #172a3a;
+
+            color: white;
+
+            text-align: center;
+
+            padding: 20px;
+        }
+
+
+        footer p {
+            margin: 0;
+
+            font-size: 13px;
+
+            opacity: 0.85;
+        }
+
+
+        /* =========================
+           RESPONSIVE
+           ========================= */
+
+        @media (max-width: 600px) {
+
+            header h1 {
+                font-size: 27px;
+            }
+
+            nav a {
+                margin: 0 7px;
+                font-size: 13px;
+            }
+
+            .login-container {
+                padding: 30px 15px;
+            }
+
+            .login-card {
+                padding: 28px 22px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         HEADER
+         ========================= -->
+
+    <header>
+
+        <h1>
+            Campus AI Helpdesk
+        </h1>
+
+        <p>
+            Smart Campus Support System
+        </p>
+
+    </header>
+
+
+    <!-- =========================
+         NAVIGATION
+         ========================= -->
+
+    <nav>
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="login.html">
+            Login
+        </a>
+
+    </nav>
+
+
+    <!-- =========================
+         LOGIN
+         ========================= -->
+
+    <div class="login-container">
+
+        <div class="login-card">
+
+
+            <!-- Icon -->
+
+            <div class="login-icon">
+                🔐
+            </div>
+
+
+            <h2>
+                Welcome Back
+            </h2>
+
+
+            <p class="login-subtitle">
+
+                Login to access the Campus AI Helpdesk
+                and manage your support tickets.
+
+            </p>
+
+
+            <!-- Login Form -->
+
+            <form action="login"
+                  method="post">
+
+
+                <label>
+                    Email Address
+                </label>
+
+
+                <input
+                    type="email"
+                    name="email"
+                    placeholder="Enter your email"
+                    required>
+
+
+                <label>
+                    Password
+                </label>
+
+
+                <input
+                    type="password"
+                    name="password"
+                    placeholder="Enter your password"
+                    required>
+
+
+                <button
+                    type="submit"
+                    class="login-button">
+
+                    Login
+
+                </button>
+
+
+            </form>
+
+
+            <!-- =========================
+                 FORGOT PASSWORD
+                 ========================= -->
+
+            <div class="forgot-password">
+
+                <a href="forgot-password.html">
+                    Forgot Password?
+                </a>
+
+            </div>
+
+
+            <!-- =========================
+                 REGISTER
+                 ========================= -->
+
+            <div class="register-link">
+
+                Don't have a student account?
+
+                <br>
+
+                <a href="register.html">
+                    Create a Student Account
+                </a>
+
+            </div>
+
+
+            <!-- Information -->
+
+            <div class="info-box">
+
+                <p>
+                    Students and staff can use their
+                    registered campus account to login.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         FOOTER
+         ========================= -->
+
+    <footer>
+
+        <p>
+            Campus AI Helpdesk | PBL Project 2026
+        </p>
+
+    </footer>
+
+
+</body>
+
+</html>
